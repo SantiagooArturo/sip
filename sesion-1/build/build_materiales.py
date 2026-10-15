@@ -449,11 +449,11 @@ def kit_design_system():
 def kit_practica():
     base = kit("pra", "Presentacion_10_Practica_guiada", "Kit_Skill_de_correos")
     txt(os.path.join(base, A, "Prompt_para_crear_la_skill.txt"), C.PROMPT_SKILL_CORREOS)
-    txt(os.path.join(base, A, "Como_elegir_tus_5_correos.txt"), C.COMO_ELEGIR_CORREOS)
+    txt(os.path.join(base, A, "Antes_de_empezar.txt"), C.ANTES_DE_EMPEZAR)
     txt(os.path.join(base, B, "Borradores_para_probar.txt"), C.BORRADORES_PRUEBA)
     leeme(base, "KIT · MI SKILL DE CORREOS", "Crear una Skill que convierte un borrador rápido en un correo escrito con tu estilo.",
-          "El prompt para crear la Skill y cómo elegir tus 5 correos.", "Tres borradores vagos para probarla.",
-          ["Junta 5 correos que enviaste y aplica el semáforo.", "En un chat nuevo, pega el prompt y tus 5 correos.",
+          "El prompt para crear la Skill y cómo activar el conector de Microsoft 365.", "Tres borradores vagos para probarla.",
+          ["Activa el conector de Microsoft 365.", "En un chat nuevo, pega el prompt: Claude lee tus últimos 5 correos enviados.",
            "Guarda la Skill que te devuelve Claude.", "Pruébala con los borradores del kit."])
 
 def zipear():

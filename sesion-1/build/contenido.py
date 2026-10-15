@@ -488,29 +488,22 @@ Una idea por slide, colores de la ficha. Solo datos del archivo."""
 # ----------------------------------------------------------------- practica ---
 PROMPT_SKILL_CORREOS = """Quiero crear una Skill que escriba correos con mi estilo.
 
-Abajo te pego 5 correos que yo envié. Analízalos y detecta cómo escribo: saludo y despedida, largo de las frases, nivel de formalidad, palabras que repito, cómo pido las cosas, cómo cierro y mi firma.
+Usa el conector de Microsoft 365 y lee los últimos 5 correos que envié desde mi Outlook (carpeta «Elementos enviados»). Salta reenvíos y respuestas de una línea.
+
+Identifica mis patrones de escritura: saludo y despedida, largo de las frases, nivel de formalidad, palabras que repito, cómo pido las cosas, cómo cierro y mi firma.
 
 Con eso crea la Skill «correos-con-mi-estilo»:
 - Se usa cuando le paso un borrador rápido o una idea suelta de correo (por ejemplo: «dile a Ana que el reporte va el viernes»).
 - Devuelve solo el correo final, con asunto y cuerpo, como yo lo habría escrito. Sin explicaciones ni variantes.
 - Si falta un dato clave (a quién va, qué se pide, una fecha), lo deja entre corchetes en lugar de inventarlo.
-- Imita mi estilo, no copia frases enteras de mis correos.
+- Guarda solo el estilo: ni nombres, ni datos de clientes, ni frases copiadas de mis correos.
 
-Al final, dame la Skill lista para guardar.
+Antes de crearla, muéstrame en 5 viñetas los patrones que encontraste. Al final, dame la Skill lista para guardar."""
 
-MIS 5 CORREOS
-[Correo 1: pega el texto completo]
-[Correo 2]
-[Correo 3]
-[Correo 4]
-[Correo 5]"""
-
-COMO_ELEGIR_CORREOS = """CÓMO ELEGIR TUS 5 CORREOS
-1. En Outlook, entra a «Elementos enviados».
-2. Elige 5 correos que escribiste tú (no reenvíos ni respuestas de una línea).
-3. Que sean variados: a tu jefe, a un compañero, a otra área, uno que pide algo y uno que da una noticia.
-4. Copia el texto completo de cada uno, con saludo y firma.
-5. Aplica el semáforo: cambia nombres de clientes, DNI, montos de personas y todo dato confidencial por [CLIENTE], [MONTO], etc."""
+ANTES_DE_EMPEZAR = """ANTES DE EMPEZAR
+1. Activa el conector de Microsoft 365: Configuración > Conectores > Microsoft 365 > Conectar, con tu cuenta de la empresa.
+2. Revisa que en tus últimos correos enviados haya al menos 5 escritos por ti (no reenvíos).
+3. Claude solo lee esos correos para aprender tu estilo; la Skill no guarda nombres ni datos de clientes."""
 
 BORRADORES_PRUEBA = """CÓMO PROBAR TU SKILL
 Abre un chat nuevo y escribe solo el borrador, rápido y vago. Prueba estos tres:

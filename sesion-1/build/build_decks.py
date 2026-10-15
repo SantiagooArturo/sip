@@ -484,15 +484,15 @@ def deck9():
 # ================================================================ 10 practica
 def deck10():
     start("Práctica guiada", "Práctica")
-    cover("10", "Práctica guiada", "Cada uno crea una Skill que escribe correos con su propio estilo, a partir de 5 correos que ya envió.",
-          [mcell("Pasos", "04"), mcell("Correos", "05"), mcell("Meta", "Tu Skill")])
+    cover("10", "Práctica guiada", "Claude lee tus últimos 5 correos en Outlook, aprende cómo escribes y crea una Skill con tu estilo.",
+          [mcell("Pasos", "04"), mcell("Correos que lee", "05"), mcell("Meta", "Tu Skill")])
     slide("Práctica · Los pasos", [eyebrow("Práctica guiada", "Tu Skill de correos"), h1("Una Skill que escribe como tú"),
-                                  steps([st("1", "Junta 5 correos que enviaste", "De «Elementos enviados», variados. Aplica el semáforo."),
-                                         st("2", "Pega el prompt con tus 5 correos", "En un chat nuevo. Claude analiza tu estilo y arma la Skill."),
+                                  steps([st("1", "Activa el conector de Microsoft 365", "Configuración > Conectores, con tu cuenta de la empresa."),
+                                         st("2", "Pega el prompt en un chat nuevo", "Claude lee tus últimos 5 correos enviados y te muestra tus patrones."),
                                          st("3", "Guarda la Skill", "Con el botón que te da Claude, o súbela en Configuración > Capacidades > Skills."),
                                          st("4", "Pruébala con un borrador vago", "«avísale a mi jefe que el informe se retrasa». ¿Suena a ti?")], sm=False),
                                   dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
-    slide("Práctica · El prompt", [eyebrow("El prompt", "Cópialo y pega tus 5 correos al final"), h1("Crea tu Skill de correos", "font-size:28px;max-width:none"),
+    slide("Práctica · El prompt", [eyebrow("El prompt", "Cópialo tal cual en un chat nuevo"), h1("Crea tu Skill de correos", "font-size:28px;max-width:none"),
                                   prompt_long("PROMPT · CREAR LA SKILL", C.PROMPT_SKILL_CORREOS, xl=True),
                                   dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
     write(FILES[9][0], titulo(9))
