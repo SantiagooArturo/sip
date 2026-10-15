@@ -1,0 +1,126 @@
+{
+ "rutas": {
+  "sk1": "materiales/Presentacion_05_Skills/Kit_Caso_1_Respuesta_a_reclamos.zip",
+  "sk2": "materiales/Presentacion_05_Skills/Kit_Caso_2_Conciliacion_de_cashback.zip",
+  "sk3": "materiales/Presentacion_05_Skills/Kit_Caso_3_Comunicado_de_mantenimiento.zip",
+  "co1": "materiales/Presentacion_06_Conectores/Kit_Caso_1_Resumir_un_hilo.zip",
+  "co2": "materiales/Presentacion_06_Conectores/Kit_Caso_2_Preparar_mi_reunion.zip",
+  "co3": "materiales/Presentacion_06_Conectores/Kit_Caso_3_Buscar_en_OneDrive.zip",
+  "pr1": "materiales/Presentacion_07_Projects/Kit_Caso_1_Atencion_al_cliente.zip",
+  "pr2": "materiales/Presentacion_07_Projects/Kit_Caso_2_Reporte_de_transacciones.zip",
+  "pr3": "materiales/Presentacion_07_Projects/Kit_Caso_3_Campanas_y_comunicacion.zip",
+  "re1": "materiales/Presentacion_08_Research/Kit_Caso_1_Mercado_de_billeteras.zip",
+  "re2": "materiales/Presentacion_08_Research/Kit_Caso_2_Regulacion.zip",
+  "re3": "materiales/Presentacion_08_Research/Kit_Caso_3_Beneficios_de_la_competencia.zip",
+  "de1": "materiales/Presentacion_09_Design/Kit_Caso_1_Resultados_del_mes.zip",
+  "de2": "materiales/Presentacion_09_Design/Kit_Caso_2_One_pager_de_campana.zip",
+  "de3": "materiales/Presentacion_09_Design/Kit_Caso_3_Reclamos_del_trimestre.zip",
+  "pra": "materiales/Presentacion_10_Practica_guiada/Kit_Mi_Project.zip"
+ },
+ "tx": {
+  "filas": 800,
+  "monto": 215837.38,
+  "cashback": 922.34,
+  "por_tipo": {
+   "Transferencia": [
+    187,
+    85465.61
+   ],
+   "Pago QR": [
+    250,
+    61912.81
+   ],
+   "Compra con tarjeta": [
+    211,
+    52342.47
+   ],
+   "Pago de servicios": [
+    92,
+    15041.49
+   ],
+   "Recarga celular": [
+    60,
+    1075.0
+   ]
+  },
+  "top_cashback": [
+   [
+    "Mass",
+    126.84
+   ],
+   [
+    "plazaVea",
+    120.94
+   ],
+   [
+    "Inkafarma",
+    118.4
+   ]
+  ],
+  "segmento": {
+   "Nuevo": 56035.18,
+   "Recurrente": 159802.2
+  },
+  "ticket_region": {
+   "Norte": 291.24,
+   "Sur": 276.09,
+   "Centro": 270.85,
+   "Lima": 265.76,
+   "Oriente": 220.67
+  }
+ },
+ "rc": {
+  "filas": 250,
+  "por_mes": {
+   "Julio": 72,
+   "Agosto": 81,
+   "Septiembre": 97
+  },
+  "top_motivos": [
+   [
+    "Cashback no abonado",
+    72
+   ],
+   [
+    "Cobro no reconocido",
+    44
+   ],
+   [
+    "Transferencia no llegó",
+    44
+   ]
+  ],
+  "dias_por_canal": {
+   "Módulo de Atención": 4.6,
+   "App": 5.9,
+   "Web": 7.8,
+   "Teléfono": 9.9
+  },
+  "en_proceso": 5
+ },
+ "conc": {
+  "compras": 120,
+  "abonos": 117,
+  "sin_abono": [
+   "CB-5013",
+   "CB-5015",
+   "CB-5055",
+   "CB-5075",
+   "CB-5084",
+   "CB-5087"
+  ],
+  "monto_distinto": [
+   "CB-5016",
+   "CB-5023",
+   "CB-5067",
+   "CB-5108"
+  ],
+  "duplicado": "CB-5030",
+  "sin_compra": [
+   "CB-5199",
+   "CB-5207"
+  ],
+  "esperado": 290.04,
+  "abonado": 281.71
+ }
+}
