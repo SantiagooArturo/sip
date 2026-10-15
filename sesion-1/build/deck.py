@@ -448,6 +448,16 @@ def demo_slide(meta, col_left, image, alt):
         + foot(_DECK["pie"]) + '\n</div></div></section>')
 
 
+
+def qr_slide(meta, image, alt):
+    """Slide final con solo un QR centrado sobre una tarjeta blanca."""
+    SLIDES.append(
+        '<section class="slide dark"><div class="pad">\n' + top(meta)
+        + '\n<div class="body" style="align-items:center;justify-content:center">\n'
+        + '<div class="anim" style="background:#fff;border-radius:28px;padding:28px;line-height:0">'
+        + '<img src="%s" alt="%s" style="display:block;width:min(56vh,440px);height:auto;image-rendering:pixelated"></div>\n' % (img(image), alt)
+        + '</div></div></section>')
+
 def split(meta, eyebrow_, titulo, kick, items, extra=""):
     """Panel editorial: texto a la izquierda, lista numerada a la derecha."""
     pis = "".join('<div class="pi"><span class="n">%02d</span><div><div class="lab">%s</div>'

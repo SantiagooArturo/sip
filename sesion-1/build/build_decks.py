@@ -515,6 +515,7 @@ def deck11():
                                          card("fruit", "Artefactos", "Una herramienta", p("Un dashboard o herramienta simple con datos de tu equipo."))]),
                                 rule("Cowork", "Es la versión de escritorio de Claude: <b>cuando tengan la app</b>, hace tareas de varios pasos sobre tus archivos.")])
     quote("Cierre · Preguntas", "", "¿Preguntas?", center=True)
+    deck.qr_slide("Cierre · QR", "qr_lanzamiento_claude.png", "QR: Lanzamiento Claude y Uso seguro de la IA")
     write(FILES[10][0], titulo(10))
 
 
