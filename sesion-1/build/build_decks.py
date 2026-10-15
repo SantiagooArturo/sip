@@ -269,7 +269,7 @@ def deck3():
 # ================================================================ 04
 def deck4():
     start("Prompting", "Prompting")
-    cover("04", "Prompting en 10 minutos", "Cinco ingredientes y una skill que te pregunta lo que falta.",
+    cover("04", "Prompting", "Cinco ingredientes y una skill que te pregunta lo que falta.",
           [mcell("Ingredientes", "05"), mcell("Skill", "01"), mcell("Minutos", "10")])
     slide("Prompting · 5 ingredientes", [
         eyebrow("Prompting", "Cómo pedir bien"), h1("Los 5 ingredientes de un buen pedido"),
