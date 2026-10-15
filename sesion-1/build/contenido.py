@@ -486,45 +486,47 @@ Que muestre:
 Una idea por slide, colores de la ficha. Solo datos del archivo."""
 
 # ----------------------------------------------------------------- practica ---
-PLANTILLA_INSTR = """INSTRUCCIONES DE MI PROJECT (PLANTILLA: COMPLETA LO QUE ESTÁ ENTRE CORCHETES)
+PROMPT_SKILL_CORREOS = """Quiero crear una Skill que escriba correos con mi estilo.
 
-Eres el asistente de [mi área] en Sip.
+Abajo te pego 5 correos que yo envié. Analízalos y detecta cómo escribo: saludo y despedida, largo de las frases, nivel de formalidad, palabras que repito, cómo pido las cosas, cómo cierro y mi firma.
 
-QUIÉN SOY
-Soy [mi cargo]. Mi trabajo es [qué hago en una línea]. Reporto a [cargo de mi jefe].
+Con eso crea la Skill «correos-con-mi-estilo»:
+- Se usa cuando le paso un borrador rápido o una idea suelta de correo (por ejemplo: «dile a Ana que el reporte va el viernes»).
+- Devuelve solo el correo final, con asunto y cuerpo, como yo lo habría escrito. Sin explicaciones ni variantes.
+- Si falta un dato clave (a quién va, qué se pide, una fecha), lo deja entre corchetes en lugar de inventarlo.
+- Imita mi estilo, no copia frases enteras de mis correos.
 
-QUÉ HAGO SEGUIDO
-- [tarea 1 que repito cada semana]
-- [tarea 2]
+Al final, dame la Skill lista para guardar.
 
-CÓMO QUIERO QUE RESPONDAS
-- Formato: [viñetas / tabla / correo / máximo N palabras]
-- Tono: [formal / cercano]
-- Usa solo los documentos del Project; si algo no está, dilo.
+MIS 5 CORREOS
+[Correo 1: pega el texto completo]
+[Correo 2]
+[Correo 3]
+[Correo 4]
+[Correo 5]"""
 
-LO QUE NUNCA HACES
-- No inventas cifras ni nombres.
-- No me pides datos personales de clientes."""
+COMO_ELEGIR_CORREOS = """CÓMO ELEGIR TUS 5 CORREOS
+1. En Outlook, entra a «Elementos enviados».
+2. Elige 5 correos que escribiste tú (no reenvíos ni respuestas de una línea).
+3. Que sean variados: a tu jefe, a un compañero, a otra área, uno que pide algo y uno que da una noticia.
+4. Copia el texto completo de cada uno, con saludo y firma.
+5. Aplica el semáforo: cambia nombres de clientes, DNI, montos de personas y todo dato confidencial por [CLIENTE], [MONTO], etc."""
 
-PLANTILLA_CONTEXTO = """CONTEXTO DE MI ÁREA (PLANTILLA)
+BORRADORES_PRUEBA = """CÓMO PROBAR TU SKILL
+Abre un chat nuevo y escribe solo el borrador, rápido y vago. Prueba estos tres:
 
-1. Qué hace mi área y para quién trabaja.
-2. Los procesos principales, en orden.
-3. Los formatos que usamos (reportes, correos, actas) con un ejemplo de cada uno.
-4. Glosario: siglas y términos internos.
-5. Reglas: qué se aprueba, quién aprueba y plazos.
+1. avisale a mi jefe q el informe de octubre se retrasa un dia xq falta la data de finanzas
+2. pedirle a ti q me habilite el acceso al sharepoint del equipo, urgente
+3. agradecer al equipo de marketing por la campaña de noviembre, salio muy bien
 
-Recuerda el semáforo: nada de datos personales de clientes, claves ni información confidencial."""
-
-PRUEBAS_PRACTICA = """CÓMO PROBAR TU PROJECT
-1. Pídele la tarea que repites cada semana, con los 5 ingredientes.
-2. Pregúntale algo que SÍ está en tus documentos: ¿lo encuentra y dice de dónde?
-3. Pregúntale algo que NO está: ¿lo dice o lo inventa?
-4. Si la respuesta no te sirve, mejora las instrucciones, no el chat."""
+Revisa en cada correo:
+- ¿Suena a ti? ¿Saludas y te despides así?
+- ¿Dejó entre corchetes lo que faltaba en vez de inventarlo?
+- Si algo no te gusta, díselo en el chat y pídele que actualice la Skill."""
 
 TAREA = [
-    "Usa tu Project esta semana en una tarea real y anota cuánto tiempo te tomó con y sin Claude.",
-    "Elige una tarea que repites siempre igual: será tu primera Skill en la Sesión 2.",
+    "Usa tu Skill de correos esta semana en correos reales y anota qué tuviste que corregir.",
+    "Elige una tarea que repites siempre igual: será tu segunda Skill en la Sesión 2.",
     "Trae un Excel o reporte de tu área (anonimizado) para construir un artefacto.",
     "Confirma con TI si el conector de Microsoft 365 ya está habilitado en tu cuenta.",
 ]

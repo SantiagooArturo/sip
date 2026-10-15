@@ -30,7 +30,7 @@ AGENDA = [
     ("3 casos", "Projects", "El contexto que no se repite"),
     ("3 casos", "Research", "Investigar con fuentes"),
     ("3 casos", "Design", "De datos a una presentación"),
-    ("Práctica", "Práctica guiada", "Tu Project con una tarea real"),
+    ("Práctica", "Práctica guiada", "Tu Skill de correos con tu estilo"),
     ("Cierre", "Cierre", "Lo que armaste y la Sesión 2"),
 ]
 
@@ -44,7 +44,7 @@ FILES = [
     ("07_Projects.html", "Projects", "3 casos", "Atención al cliente, reporte de transacciones y campañas."),
     ("08_Research.html", "Research", "3 casos", "Mercado de billeteras, regulación y beneficios de la competencia."),
     ("09_Design.html", "Design", "3 casos", "Resultados del mes, one-pager de campaña y reclamos del trimestre."),
-    ("10_Practica_guiada.html", "Práctica guiada", "Práctica", "Cada uno crea el Project de su área con una tarea real."),
+    ("10_Practica_guiada.html", "Práctica guiada", "Práctica", "Cada uno crea una Skill que escribe correos con su estilo."),
     ("11_Cierre.html", "Cierre", "Cierre", "Lo que armaste hoy, la tarea y qué viene en la Sesión 2."),
 ]
 
@@ -484,17 +484,17 @@ def deck9():
 # ================================================================ 10 practica
 def deck10():
     start("Práctica guiada", "Práctica")
-    cover("10", "Práctica guiada", "Cada uno crea el Project de su área con una tarea real. Nadie sale sin su Project funcionando.",
-          [mcell("Pasos", "04"), mcell("Plantillas", "02"), mcell("Meta", "Tu Project")])
-    slide("Práctica · Los pasos", [eyebrow("Práctica guiada", "Tu Project"), h1("Arma el Project de tu área"),
-                                  steps([st("1", "Crea el Project", "Nómbralo «[Tu área] · Sip»."),
-                                         st("2", "Completa la plantilla de instrucciones", "Quién eres, qué haces seguido, cómo quieres que responda."),
-                                         st("3", "Sube 1 o 2 documentos de tu área", "Anonimizados: aplica el semáforo."),
-                                         st("4", "Pruébalo con tu tarea de la semana", "Con los 5 ingredientes. Pregúntale algo que no está, para ver si lo admite.")], sm=False),
-                                  dlrow([dl(DL["pra"], "Descargar las plantillas")])])
-    slide("Práctica · Plantilla", [eyebrow("La plantilla", "Cópiala y complétala"), h1("Instrucciones de tu Project", "font-size:28px;max-width:none"),
-                                  prompt_long("PLANTILLA · INSTRUCCIONES", C.PLANTILLA_INSTR, xl=True),
-                                  dlrow([dl(DL["pra"], "Descargar las plantillas")])])
+    cover("10", "Práctica guiada", "Cada uno crea una Skill que escribe correos con su propio estilo, a partir de 5 correos que ya envió.",
+          [mcell("Pasos", "04"), mcell("Correos", "05"), mcell("Meta", "Tu Skill")])
+    slide("Práctica · Los pasos", [eyebrow("Práctica guiada", "Tu Skill de correos"), h1("Una Skill que escribe como tú"),
+                                  steps([st("1", "Junta 5 correos que enviaste", "De «Elementos enviados», variados. Aplica el semáforo."),
+                                         st("2", "Pega el prompt con tus 5 correos", "En un chat nuevo. Claude analiza tu estilo y arma la Skill."),
+                                         st("3", "Guarda la Skill", "Con el botón que te da Claude, o súbela en Configuración > Capacidades > Skills."),
+                                         st("4", "Pruébala con un borrador vago", "«avísale a mi jefe que el informe se retrasa». ¿Suena a ti?")], sm=False),
+                                  dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
+    slide("Práctica · El prompt", [eyebrow("El prompt", "Cópialo y pega tus 5 correos al final"), h1("Crea tu Skill de correos", "font-size:28px;max-width:none"),
+                                  prompt_long("PROMPT · CREAR LA SKILL", C.PROMPT_SKILL_CORREOS, xl=True),
+                                  dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
     write(FILES[9][0], titulo(9))
 
 

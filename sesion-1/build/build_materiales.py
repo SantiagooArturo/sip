@@ -447,14 +447,14 @@ def kit_design_system():
 
 
 def kit_practica():
-    base = kit("pra", "Presentacion_10_Practica_guiada", "Kit_Mi_Project")
-    txt(os.path.join(base, A, "Plantilla_instrucciones.txt"), C.PLANTILLA_INSTR)
-    txt(os.path.join(base, A, "Plantilla_contexto_de_mi_area.txt"), C.PLANTILLA_CONTEXTO)
-    txt(os.path.join(base, B, "Como_probar_tu_Project.txt"), C.PRUEBAS_PRACTICA)
-    leeme(base, "KIT · MI PROJECT", "Las plantillas para crear el Project de tu área.",
-          "Plantilla de instrucciones y plantilla de contexto.", "Cómo probar tu Project en 4 pasos.",
-          ["Completa las plantillas con lo de tu área.", "Crea tu Project y pega las instrucciones.", "Pruébalo con los 4 pasos."])
-
+    base = kit("pra", "Presentacion_10_Practica_guiada", "Kit_Skill_de_correos")
+    txt(os.path.join(base, A, "Prompt_para_crear_la_skill.txt"), C.PROMPT_SKILL_CORREOS)
+    txt(os.path.join(base, A, "Como_elegir_tus_5_correos.txt"), C.COMO_ELEGIR_CORREOS)
+    txt(os.path.join(base, B, "Borradores_para_probar.txt"), C.BORRADORES_PRUEBA)
+    leeme(base, "KIT · MI SKILL DE CORREOS", "Crear una Skill que convierte un borrador rápido en un correo escrito con tu estilo.",
+          "El prompt para crear la Skill y cómo elegir tus 5 correos.", "Tres borradores vagos para probarla.",
+          ["Junta 5 correos que enviaste y aplica el semáforo.", "En un chat nuevo, pega el prompt y tus 5 correos.",
+           "Guarda la Skill que te devuelve Claude.", "Pruébala con los borradores del kit."])
 
 def zipear():
     out = {}
