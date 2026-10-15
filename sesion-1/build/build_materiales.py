@@ -420,6 +420,32 @@ def kits_design(tx, rc):
           ["Abre Claude Design.", "Sube el Excel y la ficha.", "Pega el prompt y compara las cifras."])
 
 
+def kit_design_system():
+    """Lo que usamos para armar el design system de Sip en Claude Design: prompt, respuesta, CSS en bruto, capturas y logo."""
+    src = os.path.join(HERE, "fuentes_design_system")
+    base = kit("ds", "Presentacion_09_Design", "Kit_Design_System_Sip")
+    for d in ("capturas", "logo"):
+        os.makedirs(os.path.join(base, d), exist_ok=True)
+    shutil.copy2(os.path.join(src, "Prompt_y_formulario.txt"), os.path.join(base, "Prompt_y_formulario.txt"))
+    shutil.copy2(os.path.join(src, "sip_styles.css"), os.path.join(base, "CSS_sip_en_bruto.txt"))
+    for f in ("sip_captura_1_hero.jpg", "sip_captura_2_productos.jpg", "sip_captura_3_mundo_digital.jpg"):
+        shutil.copy2(os.path.join(src, f), os.path.join(base, "capturas", f))
+    for f in ("logo_sip.png", "logo_sip.svg"):
+        shutil.copy2(os.path.join(src, f), os.path.join(base, "logo", f))
+    txt(os.path.join(base, "LEEME.txt"), "\n".join([
+        "KIT · DESIGN SYSTEM DE SIP", "==========================", "",
+        "PARA QUÉ SIRVE", "Crear el design system de Sip en Claude Design para que cada diseño salga con su identidad.", "",
+        "QUÉ TRAE",
+        "Prompt_y_formulario.txt: el prompt que usamos y qué poner en cada campo del formulario.",
+        "CSS_sip_en_bruto.txt: el CSS completo de sip.pe, tal como lo sirve la web.",
+        "capturas: 3 capturas de sip.pe. logo: el logo de Sip en PNG y SVG.", "",
+        "CÓMO USARLO",
+        "1. En Claude Design, abre «Set up your design system».",
+        "2. Copia el blurb y las notas de Prompt_y_formulario.txt en sus campos.",
+        "3. En «Add fonts, logos and assets» sube el logo, las 3 capturas y la tipografía Poppins.",
+    ]))
+
+
 def kit_practica():
     base = kit("pra", "Presentacion_10_Practica_guiada", "Kit_Mi_Project")
     txt(os.path.join(base, A, "Plantilla_instrucciones.txt"), C.PLANTILLA_INSTR)
@@ -461,6 +487,7 @@ def main():
     kits_projects((tx_x, ttx))
     kits_research()
     kits_design((tx_x, ttx), (rc_x, trc))
+    kit_design_system()
     kit_practica()
     rutas = zipear()
     shutil.rmtree(tmp)

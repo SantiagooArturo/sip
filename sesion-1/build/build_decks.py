@@ -459,7 +459,7 @@ def deck9():
                                     st("2", "Sube la ficha de identidad", "Colores, tipografía y qué no usar: la del kit es un ejemplo."),
                                     st("3", "Pide el contenido, no el diseño", "Qué historia contar y para quién."),
                                     st("4", "Ajusta conversando", "«La slide 3 con un gráfico de barras», «cifras más grandes».")], sm=False),
-                             dlrow([dl(DL["de1"], "Descargar la ficha de identidad (va en cada kit)", ghost=True)])])
+                             dlrow([dl(DL["ds"], "Descargar el kit del design system de Sip", ghost=True)])])
     slide("Design · Los 3 casos", [eyebrow("Design", "Tres casos"), h1("Lo que vamos a hacer"),
                                   mapa([("Resultados del mes", "Excel de transacciones → presentación ejecutiva de 6 slides."),
                                         ("One-pager de campaña", "Brief de «Noviembre te devuelve» → una página para comercial."),

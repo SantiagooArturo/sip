@@ -1,0 +1,88 @@
+DESIGN SYSTEM DE SIP PARA CLAUDE DESIGN
+=======================================
+
+Este kit sirve para crear el design system de Sip en Claude Design
+(pantalla "Set up your design system"), de modo que cada diseño salga
+con los colores, la tipografía y la voz de Sip.
+
+
+1. EL PROMPT QUE USAMOS
+-----------------------
+Se lo pasamos a Claude con la URL de la web y una captura del formulario
+de Claude Design:
+
+    https://sip.pe/
+    ¿Podrías leer todo el CSS y el HTML de esa página y, basado en eso,
+    decirme cómo rellenar este formulario de Claude Design lo más preciso
+    posible, para que cada diseño hecho con el design system de Sip salga
+    lo mejor posible?
+
+Claude leyó el CSS de sip.pe (está completo en CSS_sip_en_bruto.txt),
+revisó la página en el navegador y devolvió lo de abajo.
+
+
+2. CÓMO LLENAR EL FORMULARIO
+----------------------------
+
+>> Company name and blurb (copiar y pegar)
+
+Sip — billetera digital y tarjetas (crédito y débito Visa) de Intercorp en Perú. Devuelve plata (cashback) por comprar en plazaVea, Inkafarma, Makro, Oechsle, Promart y miles de comercios Visa. Productos: tarjetas, efectivo, ahorros (depósito a plazo), seguros y financiamiento. Canales: web sip.pe y App Sip.
+
+>> Link code from GitHub
+Vacío: el código de sip.pe no es público.
+
+>> Link code from your computer
+Opcional: una carpeta con CSS_sip_en_bruto.txt (cámbiale la extensión a .css).
+
+>> Upload a .fig file
+Si tienes el Figma oficial de Sip, súbelo: es la mejor fuente.
+
+>> Add fonts, logos and assets
+- logo_sip.png y logo_sip.svg (carpeta logo).
+- Las 3 capturas de la carpeta capturas.
+- La tipografía Poppins (Regular, SemiBold, Bold y Black), gratis en
+  fonts.google.com/specimen/Poppins.
+
+>> Any other notes? (copiar y pegar)
+
+COLORES (exactos del CSS de sip.pe)
+- Azul Sip (acento, botón primario, header): #00B1FF
+- Azul oscuro (fondo alterno): #0089D4 · Link: #015B86 · Azul profundo: #064D74
+- Celestes de fondo: #DEF2FF (más usado), #B6E7FF
+- Negro Sip (texto y secciones oscuras): #1B1B1D
+- Texto secundario: #4B4D53 · Texto terciario: #9799A1
+- Grises de fondo: #F1F3F4, #F7F7F7 · Disabled: fondo #DCE3E9, texto #B1B3B9
+- Amarillo de apoyo: #FFCC1E. Nada de degradados.
+
+TIPOGRAFÍA: solo Poppins.
+- Hero: Poppins Black, MAYÚSCULAS, 64/72 px (56 tablet, 40 móvil). La palabra clave va en #00B1FF ("PAGA CON SIP.").
+- Títulos: Poppins Bold — 4xl 56/64, 3xl 48/56, 2xl 40/48, xl 32/40, lg 28/32, md 24/32, sm 20/32.
+- Cuerpo: Poppins Regular — xl 20/32, lg 18/24, md 16/24, sm 14/20, xs 12/16.
+- Componentes y labels: Poppins SemiBold 16/24 y 24/32.
+- Eyebrow: Poppins Bold pequeño, en minúscula, encima de un título grande en mayúsculas ("Te presentamos nuestro" → "MUNDO DIGITAL").
+
+BOTONES: radio 8px, Poppins Bold 16/24, padding 12×16 (small) o 16×32 (medium, min 200px). Sin sombra.
+- Primario: fondo #00B1FF, texto blanco, con chevron ">" a la izquierda del texto.
+- Secundario: blanco, borde y texto #00B1FF.
+- Oscuro: fondo #1B1B1D, texto blanco (ej. "Mi cuenta").
+- Blanco sobre azul: fondo blanco, texto #1B1B1D (ej. "Solicita tu Tarjeta Sip").
+
+FORMAS Y LAYOUT
+- Radios: 8px (botones y tags), 12px (cards; si llevan imagen arriba, 12 12 0 0), 16px (contenedores grandes), círculo para íconos y fotos.
+- Diseño plano: casi sin sombras ni bordes; se separa por bloques de color.
+- Secciones alternan blanco, #1B1B1D y #00B1FF.
+- Íconos de línea dentro de un círculo #DEF2FF.
+- Header azul #00B1FF con logo blanco, y barra superior negra con los comercios aliados.
+- Tag: fondo #00B1FF, texto blanco 12px, radio 8px, padding 2×8.
+- Breakpoints: 576, 767, 1023, 1200.
+
+IMÁGENES: fotos reales de personas peruanas usando el celular o comprando, recortadas en círculo o en cards; ilustraciones 3D (alcancía, planeta, tarjeta). La tarjeta Sip es negra con logo blanco.
+
+VOZ: español peruano, cercano y optimista. Tutea. Usa "plata" (no "dinero"). Frases cortas con signos de exclamación y juegos con la marca ("¡Sip, se puede!"). Cifras en negrita (1%, 0.5%, S/50). Los CTA empiezan con verbo: "Conoce más aquí", "Descarga la app", "Solicita tu Tarjeta Sip".
+
+
+3. OJO
+------
+El CSS de sip.pe también trae Bootstrap y Angular Material (azules
+#0D6EFD y #3F51B5, fuente Roboto). Eso es de las librerías, no de la
+marca: no lo uses como color ni como tipografía de Sip.
