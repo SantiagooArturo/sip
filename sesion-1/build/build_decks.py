@@ -490,11 +490,9 @@ def deck10():
                                   steps([st("1", "Activa el conector de Microsoft 365", "Configuración > Conectores, con tu cuenta de la empresa."),
                                          st("2", "Pega el prompt en un chat nuevo", "Claude lee tus últimos 5 correos enviados y te muestra tus patrones."),
                                          st("3", "Guarda la Skill", "Con el botón que te da Claude, o súbela en Configuración > Capacidades > Skills."),
-                                         st("4", "Pruébala con un borrador vago", "«avísale a mi jefe que el informe se retrasa». ¿Suena a ti?")], sm=False),
-                                  dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
+                                         st("4", "Pruébala con un borrador vago", "«avísale a mi jefe que el informe se retrasa». ¿Suena a ti?")], sm=False)])
     slide("Práctica · El prompt", [eyebrow("El prompt", "Cópialo tal cual en un chat nuevo"), h1("Crea tu Skill de correos", "font-size:28px;max-width:none"),
-                                  prompt_long("PROMPT · CREAR LA SKILL", C.PROMPT_SKILL_CORREOS, xl=True),
-                                  dlrow([dl(DL["pra"], "Descargar el kit de la práctica")])])
+                                  prompt_long("PROMPT · CREAR LA SKILL", C.PROMPT_SKILL_CORREOS, xl=True)])
     write(FILES[9][0], titulo(9))
 
 
