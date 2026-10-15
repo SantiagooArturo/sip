@@ -205,13 +205,7 @@ def deck1():
 def deck2():
     start("Fundamentos", "Fundamentos")
     cover("02", "Fundamentos sin humo", "Lo mínimo que tienes que saber para usar Claude con criterio, sin teoría pesada.",
-          [mcell("Conceptos", "06"), mcell("Modelos", "03"), mcell("Jerga", "0")])
-    demo_slide("Fundamentos · Qué es IA", [eyebrow("Qué es IA", "Tres palabras que se mezclan"),
-                                           h1("IA, Machine Learning y Deep Learning", "font-size:34px;max-width:16ch"),
-                                           steps([st("1", "Inteligencia artificial", "Máquinas que resuelven tareas que antes pedían a una persona."),
-                                                  st("2", "Machine Learning", "Aprende de ejemplos en lugar de seguir reglas escritas a mano."),
-                                                  st("3", "Deep Learning", "Redes enormes entrenadas con millones de ejemplos. De aquí sale Claude.")], style="margin-top:18px")],
-               "ai_ml_dl.png", "IA contiene a Machine Learning, que contiene a Deep Learning")
+          [mcell("Conceptos", "05"), mcell("Modelos", "03"), mcell("Jerga", "0")])
     slide("Fundamentos · LLM", [eyebrow("Qué es un LLM", "Modelo de lenguaje"), h1("Un modelo entrenado con enormes cantidades de texto"),
                                grid(3, [card("blue", "Cómo aprende", "Lee muchísimo texto", p("Libros, webs y documentos: aprende cómo se escribe y cómo se relacionan las ideas.")),
                                         card("lemon", "Cómo responde", "Predice la siguiente palabra", p("Escribe la palabra más probable, una tras otra. Por eso responde distinto cada vez.")),
