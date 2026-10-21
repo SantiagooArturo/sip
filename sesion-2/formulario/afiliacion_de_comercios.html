@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Afiliación de comercios · Formulario de práctica</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cel:#00B1FF;--ink:#1B1B1D;--mut:#5F6B7A;--line:#DCE3EC;--bg:#F3F8FC;--soft:#DEF2FF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Figtree,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:24px 16px 60px}
+.wrap{max-width:760px;margin:0 auto}
+.aviso{background:#FFF4D6;border:1px solid #F2C14E;color:#6B4E00;border-radius:10px;padding:10px 14px;font-size:13px;margin-bottom:18px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+header .dot{width:34px;height:34px;border-radius:10px;background:var(--cel)}
+h1{font-size:26px;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+form,.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input,select{width:100%;font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+input:focus,select:focus{outline:2px solid var(--cel);border-color:var(--cel)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:400}
+.chk input{width:auto;margin-top:3px}
+.err{color:#B3261E;font-size:13px;margin-top:14px;min-height:18px}
+button{margin-top:6px;background:var(--cel);color:#fff;border:0;border-radius:999px;font:inherit;font-weight:600;font-size:15px;padding:13px 26px;cursor:pointer}
+button:hover{background:#0095D9}
+.ok{display:none;margin-top:18px;background:var(--soft);border:1px solid var(--cel);border-radius:14px;padding:18px}
+.ok b.code{font-size:22px;letter-spacing:.02em}
+.panel{margin-top:22px}
+.panel h2{font-size:18px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600;font-size:12px}
+.vacio{color:var(--mut);font-size:14px}
+.limpiar{background:#fff;color:var(--ink);border:1px solid var(--line);font-size:13px;padding:8px 16px;margin-top:14px}
+@media (max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:22px}}
+</style></head><body>
+<div class="wrap">
+  <div class="aviso"><b>Formulario ficticio para práctica</b> del taller MyWorkIn × SIP. No registra nada en ningún sistema: los datos se quedan en esta pestaña.</div>
+  <header><span class="dot"></span><h1>Afiliación de comercios</h1></header>
+  <p class="sub">Registra un comercio para que empiece a cobrar con QR. Al enviar recibes un código de solicitud.</p>
+
+  <form id="f" novalidate>
+    <div class="grid">
+      <div><label for="ruc">RUC</label><input id="ruc" name="ruc" inputmode="numeric" maxlength="11" placeholder="11 dígitos"></div>
+      <div><label for="rubro">Rubro</label>
+        <select id="rubro" name="rubro">
+          <option value="">Elige un rubro</option>
+          <option>Supermercados</option><option>Farmacias</option><option>Mejoramiento del hogar</option>
+          <option>Retail y tiendas por departamento</option><option>Restaurantes y cafeterías</option><option>Entretenimiento</option>
+        </select></div>
+      <div class="full"><label for="razon">Razón social</label><input id="razon" name="razon"></div>
+      <div><label for="nombre">Nombre comercial</label><input id="nombre" name="nombre"></div>
+      <div><label for="distrito">Distrito</label><input id="distrito" name="distrito"></div>
+      <div><label for="correo">Correo de contacto</label><input id="correo" name="correo" type="email"></div>
+      <div><label for="telefono">Teléfono</label><input id="telefono" name="telefono" inputmode="numeric" maxlength="9"></div>
+      <div class="full"><label for="ventas">Ventas mensuales estimadas (S/)</label><input id="ventas" name="ventas" inputmode="numeric" placeholder="Solo números"></div>
+      <div class="full"><label class="chk"><input id="decl" type="checkbox"> Declaro que los datos son correctos y que el comercio acepta las condiciones de afiliación.</label></div>
+    </div>
+    <div class="err" id="err"></div>
+    <button type="submit">Enviar solicitud</button>
+    <div class="ok" id="ok"></div>
+  </form>
+
+  <div class="panel">
+    <h2>Solicitudes enviadas</h2>
+    <div id="lista"></div>
+    <button class="limpiar" id="limpiar" type="button">Borrar la lista</button>
+  </div>
+</div>
+<script>
+const KEY='sip_afiliaciones';
+const campos=['ruc','rubro','razon','nombre','distrito','correo','telefono','ventas'];
+const nombres={ruc:'RUC',rubro:'Rubro',razon:'Razón social',nombre:'Nombre comercial',distrito:'Distrito',correo:'Correo',telefono:'Teléfono',ventas:'Ventas mensuales'};
+function leer(){try{return JSON.parse(sessionStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+function guardar(l){try{sessionStorage.setItem(KEY,JSON.stringify(l))}catch(e){}}
+// mismo calculo que contenido2.codigo_afiliacion
+function codigo(ruc){const s=[...ruc].reduce((a,d)=>a+Number(d),0)%97;return 'AF-'+ruc.slice(-4)+'-'+String(s).padStart(2,'0')}
+function pintar(){
+  const l=leer(), el=document.getElementById('lista');
+  if(!l.length){el.innerHTML='<p class="vacio">Todavía no hay solicitudes.</p>';return}
+  el.innerHTML='<table><tr><th>Código</th><th>Comercio</th><th>RUC</th><th>Rubro</th><th>Ventas (S/)</th></tr>'+
+    l.map(x=>'<tr><td><b>'+x.codigo+'</b></td><td>'+esc(x.nombre)+'</td><td>'+x.ruc+'</td><td>'+esc(x.rubro)+'</td><td>'+Number(x.ventas).toLocaleString('es-PE')+'</td></tr>').join('')+'</table>';
+}
+function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v={}; campos.forEach(c=>v[c]=document.getElementById(c).value.trim());
+  const faltan=campos.filter(c=>!v[c]).map(c=>nombres[c]);
+  const err=document.getElementById('err'), ok=document.getElementById('ok');
+  ok.style.display='none';
+  if(faltan.length){err.textContent='Faltan: '+faltan.join(', ')+'.';return}
+  if(!/^(10|20)\d{9}$/.test(v.ruc)){err.textContent='El RUC debe tener 11 dígitos y empezar con 10 o 20.';return}
+  if(!/^\d{9}$/.test(v.telefono)){err.textContent='El teléfono debe tener 9 dígitos.';return}
+  v.ventas=v.ventas.replace(/[^\d]/g,'');
+  if(!v.ventas){err.textContent='Las ventas deben ser un número.';return}
+  if(!document.getElementById('decl').checked){err.textContent='Marca la declaración para enviar.';return}
+  err.textContent='';
+  v.codigo=codigo(v.ruc);
+  const l=leer().filter(x=>x.ruc!==v.ruc); l.push(v); guardar(l); pintar();
+  ok.innerHTML='Solicitud enviada para <b>'+esc(v.nombre)+'</b>.<br>Código de solicitud: <b class="code">'+v.codigo+'</b>';
+  ok.style.display='block';
+  document.getElementById('f').reset();
+});
+document.getElementById('limpiar').onclick=()=>{guardar([]);pintar()};
+pintar();
+</script>
+</body></html>

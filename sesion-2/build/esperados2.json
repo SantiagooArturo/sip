@@ -1,0 +1,315 @@
+{
+ "rutas": {
+  "ol1": "materiales/Presentacion_02_Outlook_conectado/Kit_Ejercicio_1_Priorizar_la_bandeja.zip",
+  "ol2": "materiales/Presentacion_02_Outlook_conectado/Kit_Ejercicio_2_Responder_en_lote.zip",
+  "ol3": "materiales/Presentacion_02_Outlook_conectado/Kit_Ejercicio_3_Tu_semana_en_el_calendario.zip",
+  "sk": "materiales/Presentacion_04_Tu_segunda_Skill/Kit_Tu_segunda_Skill.zip",
+  "re1": "materiales/Presentacion_07_Ejercicios_Research/Kit_Ejercicio_1_Mercado_de_billeteras.zip",
+  "re2": "materiales/Presentacion_07_Ejercicios_Research/Kit_Ejercicio_2_Regulacion.zip",
+  "re3": "materiales/Presentacion_07_Ejercicios_Research/Kit_Ejercicio_3_Sip_vs_competencia.zip",
+  "ma1": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_1_Simulador_de_cashback.zip",
+  "ma2": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_2_Dashboard_de_reclamos.zip",
+  "ma3": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_3_Conciliador_visual.zip",
+  "ma4": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_4_Calculadora_de_comisiones.zip",
+  "ma5": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_5_Clasificador_de_reclamos.zip",
+  "ej1": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_1_Skill_Acta_de_reunion.zip",
+  "ej2": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_2_Skill_Reporte_semanal.zip",
+  "ej3": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_3_Project_Comercios_afiliados.zip",
+  "ej4": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_4_Project_Riesgo_y_cumplimiento.zip",
+  "ej5": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_5_Design_Banner_de_promo.zip",
+  "ej6": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_6_Design_Pantalla_de_la_app.zip",
+  "ch1": "materiales/Presentacion_10_Ejercicios_Chrome_y_Cowork/Kit_Ejercicio_1_Chrome_Llenar_un_formulario.zip",
+  "ch2": "materiales/Presentacion_10_Ejercicios_Chrome_y_Cowork/Kit_Ejercicio_2_Chrome_Webs_de_la_competencia.zip",
+  "cw1": "materiales/Presentacion_10_Ejercicios_Chrome_y_Cowork/Kit_Ejercicio_3_Cowork_Ordenar_comprobantes.zip",
+  "cw2": "materiales/Presentacion_10_Ejercicios_Chrome_y_Cowork/Kit_Ejercicio_4_Cowork_Reporte_desde_varios_archivos.zip"
+ },
+ "sim": {
+  "A": {
+   "por_cliente": 5.1,
+   "costo": 102000.0,
+   "por_compra": 1.7,
+   "alcanza": 29411,
+   "topa": "No",
+   "supera": "No"
+  },
+  "B": {
+   "por_cliente": 40,
+   "costo": 1200000,
+   "por_compra": 6.67,
+   "alcanza": 25000,
+   "topa": "Sí",
+   "supera": "Sí"
+  },
+  "C": {
+   "por_cliente": 6.0,
+   "costo": 30000.0,
+   "por_compra": 3.0,
+   "alcanza": 8333,
+   "topa": "No",
+   "supera": "No"
+  }
+ },
+ "rec": {
+  "total": 186,
+  "resueltos": 127,
+  "en_proceso": 59,
+  "fuera": 20,
+  "pct_fuera": 10.8,
+  "por_motivo": [
+   [
+    "Cashback no abonado",
+    57
+   ],
+   [
+    "Cobro no reconocido",
+    37
+   ],
+   [
+    "Transferencia no llegó",
+    26
+   ],
+   [
+    "Bloqueo de cuenta",
+    22
+   ],
+   [
+    "Pase a cuotas",
+    20
+   ],
+   [
+    "Atención en módulo",
+    19
+   ],
+   [
+    "Otros",
+    5
+   ]
+  ],
+  "por_semana": [
+   [
+    "S1",
+    38
+   ],
+   [
+    "S2",
+    40
+   ],
+   [
+    "S3",
+    47
+   ],
+   [
+    "S4",
+    42
+   ],
+   [
+    "S5",
+    19
+   ]
+  ],
+  "abiertos_fuera": [
+   "R-3018",
+   "R-3020",
+   "R-3021",
+   "R-3023",
+   "R-3033",
+   "R-3037",
+   "R-3041",
+   "R-3048",
+   "R-3055",
+   "R-3069",
+   "R-3083"
+  ],
+  "app": {
+   "total": 93,
+   "pct_fuera": 5.4
+  }
+ },
+ "conc": {
+  "compras": 140,
+  "abonos": 137,
+  "sin_abono": [
+   "CB-6017",
+   "CB-6044",
+   "CB-6057",
+   "CB-6096",
+   "CB-6129",
+   "CB-6134",
+   "CB-6136"
+  ],
+  "monto_distinto": [
+   "CB-6014",
+   "CB-6061",
+   "CB-6066",
+   "CB-6074",
+   "CB-6077"
+  ],
+  "duplicado": [
+   "CB-6036",
+   "CB-6068"
+  ],
+  "sin_compra": [
+   "CB-6211",
+   "CB-6224"
+  ],
+  "esperado": 343.74,
+  "abonado": 325.71,
+  "diferencia": 18.03
+ },
+ "com": [
+  [
+   "Farmacias",
+   80000,
+   2000,
+   {
+    "tasa": 1.4,
+    "desc": 0.2,
+    "minimo": false,
+    "comision": 1120.0,
+    "igv": 201.6,
+    "total": 1321.6,
+    "neto": 78678.4
+   }
+  ],
+  [
+   "Restaurantes y cafeterías",
+   30000,
+   1200,
+   {
+    "tasa": 2.2,
+    "desc": 0.0,
+    "minimo": false,
+    "comision": 660.0,
+    "igv": 118.8,
+    "total": 778.8,
+    "neto": 29221.2
+   }
+  ],
+  [
+   "Supermercados",
+   250000,
+   9000,
+   {
+    "tasa": 1.0,
+    "desc": 0.4,
+    "minimo": false,
+    "comision": 2500.0,
+    "igv": 450.0,
+    "total": 2950.0,
+    "neto": 247050.0
+   }
+  ],
+  [
+   "Entretenimiento",
+   4000,
+   900,
+   {
+    "tasa": 2.5,
+    "desc": 0.0,
+    "minimo": true,
+    "comision": 135.0,
+    "igv": 24.3,
+    "total": 159.3,
+    "neto": 3840.7
+   }
+  ]
+ ],
+ "clasif": [
+  [
+   "Cashback no abonado",
+   "Media",
+   "No"
+  ],
+  [
+   "Cobro no reconocido",
+   "Alta",
+   "Sí"
+  ],
+  [
+   "Pase a cuotas",
+   "Baja",
+   "No"
+  ],
+  [
+   "Transferencia no llegó",
+   "Media",
+   "No"
+  ],
+  [
+   "Bloqueo de cuenta",
+   "Alta",
+   "Sí"
+  ],
+  [
+   "Atención en módulo",
+   "Baja",
+   "No"
+  ],
+  [
+   "Cobro no reconocido",
+   "Alta",
+   "Sí"
+  ],
+  [
+   "Otros",
+   "Baja",
+   "No"
+  ]
+ ],
+ "form": [
+  [
+   "Botica Santa Rosa",
+   "20604418827",
+   "AF-8827-42"
+  ],
+  [
+   "Mar y Tierra",
+   "20611253390",
+   "AF-3390-32"
+  ],
+  [
+   "Bazar Rosita",
+   "10457712986",
+   "AF-2986-50"
+  ]
+ ],
+ "comp": {
+  "facturas": 13,
+  "total": 36464.74,
+  "proveedores": 5
+ },
+ "rep": {
+  "ops": 43342,
+  "monto": 4504470.19,
+  "semanas": [
+   {
+    "semana": 1,
+    "filas": 70,
+    "ops": 9328,
+    "monto": 937666.4,
+    "var": null
+   },
+   {
+    "semana": 2,
+    "filas": 70,
+    "ops": 9300,
+    "monto": 976158.74,
+    "var": 4.1
+   },
+   {
+    "semana": 3,
+    "filas": 70,
+    "ops": 9469,
+    "monto": 1017809.78,
+    "var": 4.3
+   },
+   {
+    "semana": 4,
+    "filas": 100,
+    "ops": 15245,
+    "monto": 1572835.27,
+    "var": 54.5
+   }
+  ]
+ }
+}

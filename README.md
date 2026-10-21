@@ -14,3 +14,14 @@ Por herramienta (Skills, Conectores, Projects, Research, Design) hay 3 casos: 1 
   (formato que pide Claude para subirlas).
 - Datos FICTICIOS (transacciones, reclamos, políticas, campañas). Resultados esperados en `build/esperados.json`.
 - Diseño: base.css de Interbank (Figtree, paleta Interbank) + logo de Sip recoloreado a celeste #00B1FF.
+
+## Sesión 2 · Taller práctico: Conectores, Skills y Artefactos (`sesion-2/`)
+11 decks en el mismo índice (`sesion-1/index.html#s2`) + 22 kits en `sesion-2/materiales/`.
+- **01** Repaso · **02–06** lo nuevo: Outlook conectado (3 ejercicios), Research (pendiente de la S1),
+  Tu segunda Skill (1 ejercicio), Artefactos, Claude en Chrome · **07–10** ejercicios: Research (3),
+  Micro-apps con artefactos (5), Skills/Projects/Design (6), Chrome y Cowork (4) · **11** Cierre.
+- Cada ejercicio: slide de ficha (qué se logra, qué trae el kit, pasos, «sale bien si») + slide del prompt
+  con Copiar y Descargar. Kit = LEEME.txt + 1_Para_construir (incluye Prompt.txt) + 2_Para_probar.
+- Formulario de práctica para Claude en Chrome: `sesion-2/formulario/afiliacion_de_comercios.html`.
+- **Reconstruir:** `cd sesion-2/build && python3 build_materiales2.py && python3 build_decks2.py && python3 qa2.py`
+  y luego `cd ../../sesion-1/build && python3 build_index.py`. Usa el motor de `sesion-1/build/` (deck.py, qa.py).

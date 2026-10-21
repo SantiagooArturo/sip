@@ -7,6 +7,9 @@ intro animada palabra por palabra -> home con una tarjeta por bloque.
 import os
 
 from build_decks import FILES
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "sesion-2", "build"))
+from contenido2 import FILES2  # noqa: E402
 from deck import LOGO_MW, OUT_DIR, HERE, logo_em
 
 with open(os.path.join(HERE, "index_base.css"), encoding="utf-8") as f:
@@ -38,7 +41,16 @@ EXT_CSS = """
   .intro-wrap{padding:0 24px}
   .intro-line{font-size:26px}
   .home-inner{padding:0 24px}
+  .session-chip{flex-direction:column;gap:3px;text-align:center;border-radius:18px;padding:10px 18px}
+  .session-chip .dot,.session-chip .sep{display:none}
+  .ses-h{flex-wrap:wrap;gap:4px 12px}
+  .ses-h .n{flex-basis:100%}
 }
+.ses-h{display:flex;align-items:baseline;gap:14px;margin:46px 0 16px;scroll-margin-top:30px}
+.ses-h:first-of-type{margin-top:40px}
+.ses-h .n{font-family:var(--fm);font-size:12px;color:var(--lemon);letter-spacing:.05em}
+.ses-h h3{font-size:22px;font-weight:600;color:var(--oat);letter-spacing:-.02em}
+.ses-h .d{font-family:var(--fm);font-size:11.5px;color:#C3CEDF}
 """
 
 CARD = """      <a class="card" href="%(href)s">
@@ -51,11 +63,13 @@ CARD = """      <a class="card" href="%(href)s">
 
 cards = "\n".join(CARD % {"href": f, "n": i + 1, "mins": mins, "title": t, "desc": d}
                   for i, (f, t, mins, d) in enumerate(FILES))
+cards2 = "\n".join(CARD % {"href": "../sesion-2/" + f, "n": i + 1, "mins": mins, "title": t, "desc": d}
+                   for i, (f, t, mins, d) in enumerate(FILES2))
 
 HTML = """<!doctype html>
 <html lang="es"><head><meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Workshop de IA con Claude &middot; Sesi&oacute;n 1 &middot; SIP</title>
+<title>Workshop de IA con Claude &middot; SIP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -79,13 +93,18 @@ HTML = """<!doctype html>
       <div class="plate"><img src="%(logo)s" class="mw" alt="MyWorkIn">%(logo_em)s</div>
     </div>
     <div style="display:flex;justify-content:center">
-      <div class="session-chip"><span class="dot"></span>Sesi&oacute;n 1 &middot; Fundamentos de IA y entornos de Claude<span class="sep">&middot;</span><b>Santiago Franco</b> &middot; MyWorkIn</div>
+      <div class="session-chip"><span class="dot"></span><span>Sesiones 1 y 2 &middot; Workshop y taller pr&aacute;ctico</span><span class="sep">&middot;</span><span><b>Santiago Franco</b> &middot; MyWorkIn</span></div>
     </div>
     <div class="home-eyebrow">Workshop de IA con Claude &middot; SIP</div>
     <h1 class="home-title">Elige el bloque que quieres revisar</h1>
 
+    <div class="ses-h" id="s1"><span class="n">SESI&Oacute;N 1</span><h3>Fundamentos de IA y entornos de Claude</h3><span class="d">11 bloques</span></div>
     <div class="cards">
 %(cards)s
+    </div>
+    <div class="ses-h" id="s2"><span class="n">SESI&Oacute;N 2</span><h3>Taller pr&aacute;ctico: Conectores, Skills y Artefactos</h3><span class="d">11 bloques</span></div>
+    <div class="cards">
+%(cards2)s
     </div>
 
     <div class="home-foot">MyWorkIn &times; SIP &mdash; 2026</div>
@@ -144,9 +163,13 @@ if(visto){
   intro.addEventListener('click', enter);
   setTimeout(enter, 3600);
 }
+// al volver de un bloque de la Sesion 2 (index.html#s2) se baja a esa seccion
+if(location.hash){
+  setTimeout(()=>{ const el=document.querySelector(location.hash); if(el) el.scrollIntoView(); }, visto ? 50 : 4300);
+}
 </script>
 </body></html>
-""" % {"css": BASE_CSS + EXT_CSS, "logo": LOGO_MW, "logo_em": logo_em(), "cards": cards}
+""" % {"css": BASE_CSS + EXT_CSS, "logo": LOGO_MW, "logo_em": logo_em(), "cards": cards, "cards2": cards2}
 
 out = os.path.join(OUT_DIR, "index.html")
 with open(out, "w", encoding="utf-8") as f:
