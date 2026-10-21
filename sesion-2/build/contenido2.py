@@ -812,10 +812,78 @@ FILES2 = [
     ("03_Research.html", "Research", "Sesión 2", "Lo pendiente de la Sesión 1: búsqueda web vs. Research y cómo verificar."),
     ("04_Tu_segunda_Skill.html", "Tu segunda Skill", "Sesión 2", "La tarea que trajiste, convertida en Skill con una ficha y un prompt."),
     ("05_Artefactos.html", "Artefactos", "Sesión 2", "Qué son, cómo se piden, cómo se comparten y qué no hacen."),
-    ("06_Claude_en_Chrome.html", "Claude en Chrome", "Sesión 2", "La extensión que trabaja en tu pestaña: instalar, permisos, sí y no."),
+    ("06_Claude_en_Chrome.html", "Claude en Chrome", "Sesión 2", "La extensión que trabaja en tu pestaña, con 2 ejercicios: leer una web y gestionar reclamos."),
     ("07_Ejercicios_Research.html", "Ejercicios · Research", "Práctica", "Mercado de billeteras, regulación y Sip vs. competencia."),
     ("08_Ejercicios_Micro_apps.html", "Ejercicios · Micro-apps", "Práctica", "Simulador, dashboard, conciliador, calculadora y clasificador con IA."),
     ("09_Ejercicios_Skills_Projects_Design.html", "Ejercicios · Skills, Projects y Design", "Práctica", "Acta, reporte semanal, comercios, riesgo, banner y pantalla de la app."),
     ("10_Ejercicios_Chrome_y_Cowork.html", "Ejercicios · Chrome y Cowork", "Práctica", "Formulario web, webs de la competencia, comprobantes y reporte."),
     ("11_Cierre.html", "Cierre", "Cierre", "Qué herramienta se lleva cada área y el siguiente paso."),
 ]
+
+# ------------------------------------------- claude en chrome (bloque 06) ---
+URL_PORTAL = URL_BASE + "/sesion-2/formulario/portal_de_reclamos.html"
+
+PROMPT_CHROME_LEER = """Entra a https://www.sip.pe y busca la sección de la tarjeta de crédito Sip.
+
+1. Navega hasta la página donde se comparan las versiones de la tarjeta (Básica, Cero, Plus y Garantía, o las que aparezcan).
+2. Arma una tabla con: versión, para quién es, costo o membresía, beneficios principales y requisitos, si los publica.
+3. Debajo, explícale en 3 líneas a un cliente nuevo cuál le conviene si compra poco y quiere pagar lo menos posible.
+4. Dame el enlace exacto de cada página que usaste.
+
+Reglas: solo lo que dice la web. Si un dato no aparece, escribe «no publicado». No llenes formularios ni hagas clic en «Solicitar»."""
+
+CHECK_CHROME_LEER = """CHECKLIST · REVISA LO QUE ARMÓ CLAUDE
+1. ¿Navegó solo dentro de sip.pe?
+2. ¿La tabla tiene todas las versiones que muestra la web?
+3. Abre el enlace que te dio: ¿los costos y beneficios coinciden con la tabla?
+4. ¿Usó «no publicado» cuando el dato no estaba, en vez de suponerlo?
+5. ¿Se detuvo antes de «Solicitar»? No debe llenar ni enviar nada.
+
+LO QUE ESTE EJERCICIO MUESTRA
+Claude lee la página como tú: hace clic en los menús, baja, cambia de página y junta lo que encuentra en una tabla."""
+
+PORTAL = [  # (id, fecha, cliente, motivo, canal, dias)
+    ("R-4101", "05/10/2026", "C-0381", "Cashback no abonado", "App", 22),
+    ("R-4102", "06/10/2026", "C-0147", "Cobro no reconocido", "Web", 21),
+    ("R-4103", "08/10/2026", "C-0922", "Transferencia no llegó", "App", 19),
+    ("R-4104", "09/10/2026", "C-0415", "Pase a cuotas", "Módulo de Atención", 18),
+    ("R-4105", "12/10/2026", "C-0263", "Bloqueo de cuenta", "App", 15),
+    ("R-4106", "12/10/2026", "C-0754", "Cashback no abonado", "App", 16),
+    ("R-4107", "14/10/2026", "C-0099", "Cobro no reconocido", "Teléfono", 13),
+    ("R-4108", "15/10/2026", "C-0610", "Transferencia no llegó", "App", 12),
+    ("R-4109", "16/10/2026", "C-0337", "Cashback no abonado", "Web", 11),
+    ("R-4110", "18/10/2026", "C-0871", "Pase a cuotas", "App", 9),
+    ("R-4111", "20/10/2026", "C-0502", "Atención en módulo", "Módulo de Atención", 7),
+    ("R-4112", "22/10/2026", "C-0218", "Bloqueo de cuenta", "App", 5),
+    ("R-4113", "02/10/2026", "C-0690", "Cobro no reconocido", "App", 25),
+    ("R-4114", "25/10/2026", "C-0433", "Otros", "Web", 2),
+]
+NOTA_ESCALADO = "Fuera de plazo: escalado a supervisor"
+ESCALAR = [r[0] for r in PORTAL if r[4] == "App" and r[5] > 15]
+
+PROMPT_CHROME_ACTUAR = """Abre este portal de reclamos de práctica: %s
+
+1. Filtra la tabla por canal «App».
+2. Encuentra los reclamos con MÁS de 15 días abiertos.
+3. En cada uno: clic en «Gestionar», cambia el estado a «Escalado», escribe en la nota «%s» y haz clic en «Guardar».
+4. Cuando termines, dime qué reclamos escalaste y cuántos días tenía cada uno.
+
+No cambies ningún otro reclamo. Si algo no está claro, pregúntame antes de guardar.""" % (URL_PORTAL, NOTA_ESCALADO)
+
+CHECK_CHROME_ACTUAR = """RESULTADO ESPERADO · PORTAL DE RECLAMOS
+""" + AVISO + """
+
+Debe escalar estos %d reclamos (canal App y más de 15 días):
+  %s
+
+Y NO debe tocar:
+  R-4105 (App, exactamente 15 días: no es «más de 15»)
+  R-4102 y R-4104 (más de 15 días, pero no son del canal App)
+
+CÓMO VERIFICARLO
+Arriba del portal, el contador «Escalados» debe decir %d y el historial de cambios debe mostrar solo esos IDs.
+Para repetir el ejercicio, usa el botón «Reiniciar el portal».
+
+LO QUE ESTE EJERCICIO MUESTRA
+Claude no solo lee: filtra, abre cada caso, cambia un campo, escribe y guarda, igual que una persona.""" % (
+    len(ESCALAR), "\n  ".join("%s (%s días)" % (r[0], r[5]) for r in PORTAL if r[0] in ESCALAR), len(ESCALAR))

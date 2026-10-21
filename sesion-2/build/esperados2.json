@@ -12,6 +12,8 @@
   "ma3": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_3_Conciliador_visual.zip",
   "ma4": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_4_Calculadora_de_comisiones.zip",
   "ma5": "materiales/Presentacion_08_Ejercicios_Micro_apps/Kit_Ejercicio_5_Clasificador_de_reclamos.zip",
+  "chx1": "materiales/Presentacion_06_Claude_en_Chrome/Kit_Ejercicio_1_Leer_y_comparar_una_web.zip",
+  "chx2": "materiales/Presentacion_06_Claude_en_Chrome/Kit_Ejercicio_2_Gestionar_reclamos_en_un_portal.zip",
   "ej1": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_1_Skill_Acta_de_reunion.zip",
   "ej2": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_2_Skill_Reporte_semanal.zip",
   "ej3": "materiales/Presentacion_09_Ejercicios_Skills_Projects_Design/Kit_Ejercicio_3_Project_Comercios_afiliados.zip",
@@ -255,6 +257,12 @@
    "Baja",
    "No"
   ]
+ ],
+ "portal": [
+  "R-4101",
+  "R-4103",
+  "R-4106",
+  "R-4113"
  ],
  "form": [
   [

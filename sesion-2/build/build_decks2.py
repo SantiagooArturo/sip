@@ -308,7 +308,7 @@ def deck6():
     H = "Claude en Chrome"
     start(H, H)
     cover("06", "Claude en Chrome", "Una extensión que deja a Claude trabajar en la pestaña que tienes abierta: leer, hacer clic y escribir.",
-          [mcell("Instala", "Extensión"), mcell("Permisos", "Por sitio"), mcell("Ejercicios", "Bloque 10")])
+          [mcell("Instala", "Extensión"), mcell("Permisos", "Por sitio"), mcell("Ejercicios", "02")])
     slide("Chrome · Qué es", [eyebrow("Qué es", "Claude en una pestaña"), h1("Claude ve la página y la usa como tú"),
                               grid(3, [card("blue", "Lee", "La página abierta", p("Entiende lo que hay en la pestaña: textos, tablas, formularios.")),
                                        card("lemon", "Actúa", "Clic, escribe, navega", p("Llena un formulario, recorre varias páginas, copia datos de una a otra.")),
@@ -324,7 +324,22 @@ def deck6():
                                '<ul><li>Llenar formularios internos o de práctica</li><li>Recorrer webs públicas y armar una tabla</li><li>Copiar datos de una página a otra</li></ul></div>'
                                '<div class="col no"><span class="k">NO</span><h3>Donde hay dinero o claves</h3>'
                                '<ul><li>Banca en línea, pagos o transferencias</li><li>Escribir contraseñas o códigos</li><li>Sistemas con datos de clientes sin autorización</li></ul></div></div>',
-                               rule("Los ejercicios", "Un formulario de práctica y las webs de la competencia, en el <b>bloque 10</b>, junto con Cowork.")])
+                               rule("Más ejercicios", "Un formulario de práctica y las webs de la competencia, en el <b>bloque 10</b>, junto con Cowork.")])
+    slide("Chrome · Los 2 ejercicios", [eyebrow("Claude en Chrome", "Dos ejercicios para probarlo"), h1("Primero lee, después actúa"),
+                                        lista([("Leer y comparar una web", "Navega sip.pe hasta las tarjetas y arma una tabla con lo que encuentra.", False),
+                                               ("Gestionar reclamos en un portal", "Filtra, abre cada reclamo vencido, lo escala con una nota y guarda.", True)], cols=2)])
+    ejercicio(1, H, "Leer y comparar una web",
+              "Ver cómo Claude navega una web como tú: abre menús, cambia de página, baja y junta lo que encuentra en una tabla.",
+              "la tabla coincide con la web, cada dato tiene su enlace y se detiene antes de «Solicitar».",
+              ["Prompt.txt", "Como_instalar_Claude_en_Chrome.txt"], ["Checklist_de_revision.txt"],
+              ["Instala la extensión y abre su panel.", "Pega el prompt.", "Mira cómo navega sip.pe.", "Abre un enlace y contrasta la tabla."],
+              "chx1", C.PROMPT_CHROME_LEER, para="todos")
+    ejercicio(2, H, "Gestionar reclamos en un portal",
+              "Ver cómo Claude actúa en una página: filtra la tabla, abre cada reclamo vencido, cambia el estado, escribe la nota y guarda.",
+              "escala solo %s y el contador «Escalados» del portal dice %d." % (", ".join(E["portal"]), len(E["portal"])),
+              ["Prompt.txt (con el enlace del portal)", "Como_instalar_Claude_en_Chrome.txt"], ["Resultado_esperado.txt"],
+              ["Abre el panel de Claude en Chrome.", "Pega el prompt.", "Mira cómo gestiona cada reclamo.", "Revisa el contador y el historial."],
+              "chx2", C.PROMPT_CHROME_ACTUAR, juntos=True, para="Atención al Cliente")
     write(FILES[5][0], titulo(5))
 
 

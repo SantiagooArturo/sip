@@ -666,6 +666,123 @@ def kits_chrome_cowork():
     return esp
 
 
+# ======================================================= claude en chrome (06)
+PORTAL_HTML = """<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Portal de reclamos · Práctica</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cel:#00B1FF;--ink:#1B1B1D;--mut:#5F6B7A;--line:#DCE3EC;--bg:#F3F8FC;--soft:#DEF2FF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Figtree,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:24px 16px 60px}
+.wrap{max-width:1000px;margin:0 auto}
+.aviso{background:#FFF4D6;border:1px solid #F2C14E;color:#6B4E00;border-radius:10px;padding:10px 14px;font-size:13px;margin-bottom:18px}
+h1{font-size:26px;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:4px 0 18px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:14px}
+.bar label{font-size:12px;font-weight:600;display:block;margin-bottom:4px}
+select,input,textarea{font:inherit;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#fff}
+.kpi{margin-left:auto;display:flex;gap:10px}
+.kpi div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:12px;color:var(--mut)}
+.kpi b{display:block;font-size:20px;color:var(--ink)}
+.tbl{background:#fff;border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-size:12px;font-weight:600;background:#FAFCFE}
+.st{font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px}
+.st.Abierto{background:var(--soft);color:#0077B0}.st.Escalado{background:#FDE7E7;color:#B3261E}.st.Resuelto{background:#E3F4EA;color:#1F8A5B}
+button{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;background:var(--cel);color:#fff}
+button.sec{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.modal{position:fixed;inset:0;background:rgba(10,20,40,.45);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.box{background:#fff;border-radius:16px;padding:22px;width:100%;max-width:460px}
+.box h2{font-size:18px;margin-bottom:4px}.box p{color:var(--mut);font-size:13px;margin-bottom:14px}
+.box label{font-size:12px;font-weight:600;display:block;margin:10px 0 4px}
+.box select,.box textarea{width:100%}.box textarea{min-height:80px}
+.acts{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.log{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.log h3{font-size:15px;margin-bottom:8px}.log li{font-size:13px;color:var(--mut);margin-left:18px;padding:2px 0}
+</style></head><body>
+<div class="wrap">
+  <div class="aviso"><b>Portal ficticio para práctica</b> del taller MyWorkIn × SIP. No está conectado a ningún sistema: los cambios se quedan en esta pestaña.</div>
+  <h1>Portal de reclamos</h1>
+  <p class="sub">Reclamos abiertos al 27/10/2026. El plazo de respuesta es de 15 días.</p>
+  <div class="bar">
+    <div><label for="canal">Canal</label><select id="canal"><option value="">Todos</option><option>App</option><option>Web</option><option>Módulo de Atención</option><option>Teléfono</option></select></div>
+    <div><label for="estado">Estado</label><select id="estado"><option value="">Todos</option><option>Abierto</option><option>Escalado</option><option>Resuelto</option></select></div>
+    <div class="kpi"><div>Mostrando<b id="kn">0</b></div><div>Escalados<b id="ke">0</b></div></div>
+  </div>
+  <div class="tbl"><table><thead><tr><th>ID</th><th>Fecha</th><th>Cliente</th><th>Motivo</th><th>Canal</th><th>Días abierto</th><th>Estado</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+  <div class="log"><h3>Historial de cambios</h3><ul id="log"></ul><button class="sec" id="reset" style="margin-top:10px">Reiniciar el portal</button></div>
+</div>
+<div class="modal" id="m"><div class="box">
+  <h2 id="mt">Gestionar</h2><p id="md"></p>
+  <label for="ms">Estado</label><select id="ms"><option>Abierto</option><option>Escalado</option><option>Resuelto</option></select>
+  <label for="mn">Nota</label><textarea id="mn" placeholder="Escribe una nota"></textarea>
+  <div class="acts"><button class="sec" id="mc">Cancelar</button><button id="mg">Guardar</button></div>
+</div></div>
+<script>
+const BASE=%(datos)s;
+const KEY='sip_portal_reclamos';
+function leer(){try{const v=JSON.parse(sessionStorage.getItem(KEY));if(v)return v}catch(e){}return{rows:BASE.map(r=>({id:r[0],fecha:r[1],cli:r[2],mot:r[3],canal:r[4],dias:r[5],estado:'Abierto',nota:''})),log:[]}}
+let S=leer(); let cur=null;
+function guardar(){try{sessionStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function pintar(){
+  const c=document.getElementById('canal').value, e=document.getElementById('estado').value;
+  const v=S.rows.filter(r=>(!c||r.canal===c)&&(!e||r.estado===e));
+  document.getElementById('tb').innerHTML=v.map(r=>'<tr><td><b>'+r.id+'</b></td><td>'+r.fecha+'</td><td>'+r.cli+'</td><td>'+esc(r.mot)+'</td><td>'+r.canal+'</td><td>'+r.dias+'</td><td><span class="st '+r.estado+'">'+r.estado+'</span></td><td><button data-id="'+r.id+'">Gestionar</button></td></tr>').join('');
+  document.getElementById('kn').textContent=v.length;
+  document.getElementById('ke').textContent=S.rows.filter(r=>r.estado==='Escalado').length;
+  document.getElementById('log').innerHTML=S.log.length?S.log.map(l=>'<li>'+esc(l)+'</li>').join(''):'<li>Sin cambios todavía.</li>';
+  document.querySelectorAll('#tb button').forEach(b=>b.onclick=()=>abrir(b.dataset.id));
+}
+function abrir(id){cur=S.rows.find(r=>r.id===id);document.getElementById('mt').textContent='Gestionar '+id;
+  document.getElementById('md').textContent=cur.mot+' · '+cur.canal+' · '+cur.dias+' días abierto';
+  document.getElementById('ms').value=cur.estado;document.getElementById('mn').value=cur.nota;document.getElementById('m').classList.add('on')}
+document.getElementById('mc').onclick=()=>document.getElementById('m').classList.remove('on');
+document.getElementById('mg').onclick=()=>{const st=document.getElementById('ms').value,no=document.getElementById('mn').value.trim();
+  if(st!==cur.estado||no!==cur.nota){S.log.push(cur.id+': '+cur.estado+' → '+st+(no?' · nota: «'+no+'»':''));cur.estado=st;cur.nota=no;guardar()}
+  document.getElementById('m').classList.remove('on');pintar()};
+document.getElementById('canal').onchange=pintar;document.getElementById('estado').onchange=pintar;
+document.getElementById('reset').onclick=()=>{try{sessionStorage.removeItem(KEY)}catch(e){}S=leer();pintar()};
+pintar();
+</script>
+</body></html>
+"""
+
+
+def portal_html():
+    dst = os.path.abspath(os.path.join(HERE, "..", "formulario", "portal_de_reclamos.html"))
+    with open(dst, "w", encoding="utf-8") as f:
+        f.write(PORTAL_HTML.replace("%(datos)s", json.dumps(C.PORTAL, ensure_ascii=False)))
+
+
+def kits_chrome():
+    pres = "Presentacion_06_Claude_en_Chrome"
+    base = kit("chx1", pres, "Kit_Ejercicio_1_Leer_y_comparar_una_web")
+    txt(os.path.join(base, A, "Prompt.txt"), C.PROMPT_CHROME_LEER)
+    txt(os.path.join(base, A, "Como_instalar_Claude_en_Chrome.txt"), C.INSTALAR_CHROME)
+    txt(os.path.join(base, B, "Checklist_de_revision.txt"), C.CHECK_CHROME_LEER)
+    leeme(base, "KIT · CLAUDE EN CHROME · LEER Y COMPARAR UNA WEB",
+          "Ver cómo Claude navega una web como tú (menús, páginas, scroll) y arma una tabla con lo que encuentra.",
+          "Prompt.txt: el pedido.\\nComo_instalar_Claude_en_Chrome.txt.", "Checklist_de_revision.txt: 5 controles.",
+          ["Instala la extensión y abre su panel en una pestaña nueva.", "Pega Prompt.txt.",
+           "Mira cómo navega sip.pe y revisa la tabla con el checklist."])
+    base = kit("chx2", pres, "Kit_Ejercicio_2_Gestionar_reclamos_en_un_portal")
+    txt(os.path.join(base, A, "Prompt.txt"), C.PROMPT_CHROME_ACTUAR)
+    txt(os.path.join(base, A, "Como_instalar_Claude_en_Chrome.txt"), C.INSTALAR_CHROME)
+    txt(os.path.join(base, B, "Resultado_esperado.txt"), C.CHECK_CHROME_ACTUAR)
+    leeme(base, "KIT · CLAUDE EN CHROME · GESTIONAR RECLAMOS EN UN PORTAL",
+          "Ver cómo Claude actúa en una página: filtra, abre cada reclamo, cambia el estado, escribe una nota y guarda.",
+          "Prompt.txt: el pedido con el enlace del portal de práctica.\\nComo_instalar_Claude_en_Chrome.txt.",
+          "Resultado_esperado.txt: qué reclamos debe escalar y cuáles no.",
+          ["Abre el panel de Claude en Chrome.", "Pega Prompt.txt.", "Mira cómo gestiona cada reclamo.",
+           "Revisa el contador «Escalados» y el historial con Resultado_esperado.txt."])
+    return {"portal": C.ESCALAR}
+
+
 def zipear():
     out = {}
     for clave, (pres, nombre) in KITS.items():
@@ -688,6 +805,8 @@ def main():
     kit_segunda_skill()
     kits_research()
     esp = kits_microapps()
+    esp.update(kits_chrome())
+    portal_html()
     kits_spd()
     esp.update(kits_chrome_cowork())
     rutas = zipear()
